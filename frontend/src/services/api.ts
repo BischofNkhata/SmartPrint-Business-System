@@ -19,9 +19,18 @@ export interface LoginResponse {
   role: string;
 }
 
+function getStoredToken(): string | null {
+  try {
+    const rawAuth = localStorage.getItem('printmis-auth');
+    const token = rawAuth ? JSON.parse(rawAuth)?.state?.token : null;
+    return typeof token === 'string' ? token : null;
+  } catch {
+    return null;
+  }
+}
+
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  const rawAuth = localStorage.getItem('printmis-auth');
-  const token = rawAuth ? JSON.parse(rawAuth)?.state?.token : null;
+  const token = getStoredToken();
   const response = await fetch(`${API_PREFIX}${path}`, {
     headers: {
       'Content-Type': 'application/json',
@@ -32,7 +41,7 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   });
   if (!response.ok) {
     if (response.status === 401) {
-      localStorage.removeItem('printmis-auth');
+      localStorage.removeItem('printmis-auth'); // best-effort logout on auth failure
       window.location.href = '/login';
     }
     throw new Error(`API request failed: ${response.status}`);

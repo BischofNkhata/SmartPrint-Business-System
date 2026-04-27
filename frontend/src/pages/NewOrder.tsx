@@ -147,7 +147,7 @@ export default function NewOrder() {
   };
 
   return (
-    <div className="fade-in" style={{ maxWidth: 680, margin: '0 auto' }}>
+    <div className="fade-in" style={{ maxWidth: 820, margin: '0 auto' }}>
       <PageHeader
         title="New Order"
         icon={<FilePlus2 size={18} />}
@@ -177,7 +177,7 @@ export default function NewOrder() {
                 placeholder="Search customers by name..."
               />
               {showCustomerDropdown && (
-                <div style={{ position: 'absolute', left: 0, right: 0, background: 'white', border: '1px solid var(--color-border)', borderRadius: 8, maxHeight: 220, overflow: 'auto', zIndex: 30 }}>
+                <div style={{ position: 'absolute', left: 0, right: 0, background: 'var(--bg-elevated)', border: '1px solid var(--border)', borderRadius: 14, maxHeight: 260, overflow: 'auto', zIndex: 30, boxShadow: 'var(--shadow-md)' }}>
                   {customers.filter(c => c.name.toLowerCase().includes(customerSearch.toLowerCase())).map(c => (
                     <div
                       key={c.id}
@@ -190,10 +190,10 @@ export default function NewOrder() {
                         setEditFormLevel(c.formLevel);
                         setEditingCustomer(false);
                       }}
-                      style={{ padding: '8px 12px', cursor: 'pointer', borderBottom: '1px solid var(--color-border)' }}
+                      style={{ padding: '10px 12px', cursor: 'pointer', borderBottom: '1px solid var(--border)' }}
                     >
                       <div style={{ fontWeight: 700 }}>{c.name}</div>
-                      <div style={{ fontSize: 12, color: 'var(--color-muted)' }}>{c.formLevel} {c.phone ? `· ${c.phone}` : ''}</div>
+                      <div style={{ fontSize: 12, color: 'var(--text-muted)', fontWeight: 700 }}>{c.formLevel} {c.phone ? `· ${c.phone}` : ''}</div>
                     </div>
                   ))}
                 </div>
@@ -201,16 +201,13 @@ export default function NewOrder() {
             </div>
 
             <div style={{ marginTop: 10, display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap' }}>
-              <button
-                onClick={() => setNewCustomerMode(true)}
-                style={{ fontSize: 13, color: 'var(--color-primary)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600 }}
-              >
+              <button onClick={() => setNewCustomerMode(true)} style={{ fontSize: 13, color: 'var(--brand-500)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 800 }}>
                 + New Customer
               </button>
               {customerId && (
                 <button
                   onClick={() => setEditingCustomer(prev => !prev)}
-                  style={{ fontSize: 13, color: 'var(--color-primary)', background: 'none', border: 'none', cursor: 'pointer' }}
+                  style={{ fontSize: 13, color: 'var(--brand-500)', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 800 }}
                 >
                   {editingCustomer ? 'Cancel Edit' : 'Edit Customer'}
                 </button>
@@ -249,9 +246,9 @@ export default function NewOrder() {
                           showToast('Customer updated', 'success');
                           setEditingCustomer(false);
                         }}
-                        style={{ padding: '8px 10px', borderRadius: 8, background: 'var(--color-primary)', color: 'white', border: 'none', cursor: 'pointer' }}
+                        style={{ padding: '10px 12px', borderRadius: 12, background: 'linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%)', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 900 }}
                       >Save</button>
-                      <button onClick={() => setEditingCustomer(false)} style={{ padding: '8px 10px', borderRadius: 8, background: 'white', border: '1px solid var(--color-border)' }}>Cancel</button>
+                      <button onClick={() => setEditingCustomer(false)} style={{ padding: '10px 12px', borderRadius: 12, background: 'var(--control-bg)', border: '1px solid var(--border)', color: 'var(--text)', fontWeight: 900, cursor: 'pointer' }}>Cancel</button>
                     </div>
                   </div>
                 )}
@@ -408,7 +405,7 @@ export default function NewOrder() {
         <textarea className="form-input" rows={3} value={notes} onChange={e => setNotes(e.target.value)} placeholder="Any special instructions..." style={{ resize: 'vertical' }} />
       </Card>
 
-      <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end', position: 'sticky', bottom: 10, background: 'rgba(245, 247, 251, 0.9)', backdropFilter: 'blur(4px)', padding: 10, borderRadius: 12 }}>
+      <div style={{ display: 'flex', gap: 12, justifyContent: 'flex-end', position: 'sticky', bottom: 10, background: 'var(--panel)', backdropFilter: 'blur(10px)', padding: 12, borderRadius: 16, border: '1px solid var(--border)' }}>
         <Button variant="secondary" onClick={() => navigate(-1)}>Cancel</Button>
         <Button onClick={handleSubmit} disabled={items.length === 0}>Create Order</Button>
       </div>

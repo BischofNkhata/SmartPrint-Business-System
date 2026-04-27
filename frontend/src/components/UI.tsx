@@ -10,10 +10,10 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 export function Button({ variant = 'primary', size = 'md', children, style, ...props }: ButtonProps) {
   const styles: Record<string, React.CSSProperties> = {
-    primary:   { background: 'var(--color-primary)', color: 'white', border: 'none', boxShadow: '0 8px 16px rgba(37, 99, 235, 0.22)' },
-    secondary: { background: 'white', color: 'var(--color-ink)', border: '1.5px solid var(--color-border)' },
-    danger:    { background: 'var(--color-danger)', color: 'white', border: 'none', boxShadow: '0 8px 16px rgba(220, 38, 38, 0.18)' },
-    ghost:     { background: 'transparent', color: 'var(--color-muted)', border: 'none' },
+    primary:   { background: 'linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%)', color: 'white', border: 'none', boxShadow: '0 10px 22px rgba(37, 99, 235, 0.24)' },
+    secondary: { background: 'var(--control-bg)', color: 'var(--text)', border: '1px solid var(--border)' },
+    danger:    { background: 'linear-gradient(135deg, var(--danger-600) 0%, #ef4444 100%)', color: 'white', border: 'none', boxShadow: '0 10px 22px rgba(220, 38, 38, 0.20)' },
+    ghost:     { background: 'transparent', color: 'var(--text-muted)', border: '1px solid transparent' },
   };
   const sizes: Record<string, React.CSSProperties> = {
     sm: { padding: '7px 12px', fontSize: 13 },
@@ -24,7 +24,7 @@ export function Button({ variant = 'primary', size = 'md', children, style, ...p
       {...props}
       style={{
         display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 6,
-        borderRadius: 8, fontFamily: 'DM Sans, sans-serif', fontWeight: 600,
+        borderRadius: 12, fontFamily: 'DM Sans, sans-serif', fontWeight: 800,
         cursor: props.disabled ? 'not-allowed' : 'pointer',
         opacity: props.disabled ? 0.5 : 1,
         transition: 'opacity 0.15s, transform 0.1s, box-shadow 0.15s',
@@ -40,11 +40,11 @@ export function Button({ variant = 'primary', size = 'md', children, style, ...p
 export function Card({ children, style }: { children: ReactNode; style?: React.CSSProperties }) {
   return (
     <div style={{
-      background: 'white',
-      borderRadius: 12,
-      border: '1px solid var(--color-border)',
+      background: 'var(--bg-elevated)',
+      borderRadius: 16,
+      border: '1px solid var(--border)',
       padding: 'clamp(16px, 4vw, 20px)',
-      boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+      boxShadow: 'var(--shadow-sm)',
       transition: 'all 0.3s ease',
       ...style,
     }}>

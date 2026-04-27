@@ -128,18 +128,18 @@ export default function Login() {
               margin: '0 0 6px',
               fontSize: 22,
               fontFamily: 'DM Serif Display, serif',
-              color: 'var(--color-ink)',
+              color: '#0f172a',
             }}
           >
             Welcome Back
           </h2>
-          <p style={{ margin: '0 0 24px', color: 'var(--color-muted)', fontSize: 14 }}>
+          <p style={{ margin: '0 0 24px', color: '#64748b', fontSize: 14 }}>
             Sign in to access your print shop dashboard
           </p>
 
           <form onSubmit={handleSubmit} style={{ display: 'grid', gap: 16 }}>
             <div>
-              <label className="form-label" style={{ color: 'var(--color-muted)' }}>
+              <label className="form-label" style={{ color: '#64748b' }}>
                 Username
               </label>
               <div style={{ position: 'relative' }}>
@@ -150,7 +150,7 @@ export default function Login() {
                     left: 12,
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    color: 'var(--color-muted)',
+                    color: '#64748b',
                     pointerEvents: 'none',
                   }}
                 />
@@ -160,13 +160,13 @@ export default function Login() {
                   onChange={(e) => setUsername(e.target.value)}
                   placeholder="Enter your username"
                   required
-                  style={{ paddingLeft: 36 }}
+                  style={{ paddingLeft: 36, color: '#0f172a', backgroundColor: '#ffffff' }}
                 />
               </div>
             </div>
 
             <div>
-              <label className="form-label" style={{ color: 'var(--color-muted)' }}>
+              <label className="form-label" style={{ color: '#64748b' }}>
                 Password
               </label>
               <div style={{ position: 'relative' }}>
@@ -177,7 +177,7 @@ export default function Login() {
                     left: 12,
                     top: '50%',
                     transform: 'translateY(-50%)',
-                    color: 'var(--color-muted)',
+                    color: '#64748b',
                     pointerEvents: 'none',
                   }}
                 />
@@ -188,7 +188,7 @@ export default function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
                   required
-                  style={{ paddingLeft: 36, paddingRight: 40 }}
+                  style={{ paddingLeft: 36, paddingRight: 40, color: '#0f172a', backgroundColor: '#ffffff' }}
                 />
                 <button
                   type="button"
@@ -201,7 +201,7 @@ export default function Login() {
                     background: 'none',
                     border: 'none',
                     cursor: 'pointer',
-                    color: 'var(--color-muted)',
+                    color: '#64748b',
                     padding: 4,
                   }}
                 >

@@ -72,10 +72,10 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
     setTimeout(onClose, 300);
   };
 
-  const colors: Record<ToastType, { bg: string; border: string; icon: string }> = {
-    success: { bg: '#f0fdf4', border: '#16a34a', icon: '#16a34a' },
-    error:   { bg: '#fef2f2', border: '#dc2626', icon: '#dc2626' },
-    info:    { bg: '#eff6ff', border: '#2563eb', icon: '#2563eb' },
+  const colors: Record<ToastType, { bg: string; border: string; icon: string; title: string }> = {
+    success: { bg: 'var(--bg-elevated)', border: 'rgba(22, 163, 74, 0.35)', icon: 'var(--success-600)', title: 'Success' },
+    error:   { bg: 'var(--bg-elevated)', border: 'rgba(220, 38, 38, 0.40)', icon: 'var(--danger-600)', title: 'Something went wrong' },
+    info:    { bg: 'var(--bg-elevated)', border: 'rgba(37, 99, 235, 0.35)', icon: 'var(--brand-500)', title: 'Info' },
   };
 
   const c = colors[toast.type];
@@ -84,25 +84,28 @@ function ToastItem({ toast, onClose }: { toast: Toast; onClose: () => void }) {
   return (
     <div style={{
       background: c.bg,
-      border: `1.5px solid ${c.border}`,
-      borderRadius: 10,
+      border: `1px solid ${c.border}`,
+      borderRadius: 14,
       padding: '12px 16px',
       display: 'flex',
       alignItems: 'flex-start',
       gap: 10,
-      boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+      boxShadow: 'var(--shadow-md)',
       transform: exit ? 'translateX(120%)' : 'translateX(0)',
       opacity: exit ? 0 : 1,
       transition: 'all 0.3s ease',
       pointerEvents: 'auto',
     }}>
       <Icon size={18} color={c.icon} style={{ flexShrink: 0, marginTop: 2 }} />
-      <div style={{ flex: 1, fontSize: 14, fontWeight: 600, color: '#1f2937', lineHeight: 1.4 }}>
-        {toast.message}
+      <div style={{ flex: 1, lineHeight: 1.4 }}>
+        <div style={{ fontWeight: 900, letterSpacing: '-0.01em' }}>{c.title}</div>
+        <div style={{ marginTop: 2, fontSize: 13, fontWeight: 700, color: 'var(--text-muted)' }}>
+          {toast.message}
+        </div>
       </div>
       <button
         onClick={handleClose}
-        style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#9ca3af', padding: 0, marginTop: 2 }}
+        style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--text-muted)', padding: 0, marginTop: 2 }}
       >
         <X size={16} />
       </button>

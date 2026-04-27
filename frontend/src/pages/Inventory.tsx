@@ -78,15 +78,12 @@ export default function Inventory() {
             <span style={{ fontSize: 14, fontFamily: 'DM Sans, sans-serif', color: 'var(--color-muted)', marginLeft: 4 }}>{item.unit}</span>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
-            <button
-              onClick={() => void adjustStock(item.id, -1)}
-              style={{ width: 34, height: 34, borderRadius: 8, border: '1.5px solid var(--color-border)', background: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-            >
+            <button onClick={() => void adjustStock(item.id, -1)} className="icon-btn" aria-label={`Reduce ${item.name} stock`}>
               <Minus size={14} />
             </button>
             <button
               onClick={() => { setAdjustModal(item.id); setAdjustDelta(1); }}
-              style={{ padding: '0 14px', height: 34, borderRadius: 8, background: 'var(--color-primary)', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 600, fontSize: 13 }}
+              style={{ padding: '0 14px', height: 38, borderRadius: 12, background: 'linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%)', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 900, fontSize: 13 }}
             >
               + Restock
             </button>
@@ -110,7 +107,7 @@ export default function Inventory() {
       </div>
 
       {low.length > 0 && (
-        <div style={{ background: 'var(--color-danger-light)', border: '1px solid var(--color-danger)', borderRadius: 10, padding: '12px 16px', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8, color: 'var(--color-danger)', fontWeight: 600 }}>
+        <div style={{ background: 'var(--tone-danger-bg)', border: '1px solid rgba(220, 38, 38, 0.35)', borderRadius: 14, padding: '12px 14px', marginBottom: 20, display: 'flex', alignItems: 'center', gap: 8, color: 'var(--danger-600)', fontWeight: 900 }}>
           <AlertTriangle size={16} />
           {low.length} item{low.length > 1 ? 's' : ''} running low — restock soon!
         </div>

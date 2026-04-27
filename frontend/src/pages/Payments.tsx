@@ -65,18 +65,18 @@ export default function Payments() {
                   const order = getOrder(p.orderId);
                   return (
                     <tr key={p.id}>
-                      <td style={{ fontSize: 13, color: 'var(--color-muted)' }}>{formatDateTime(p.paidAt)}</td>
+                      <td style={{ fontSize: 13, color: 'var(--text-muted)' }}>{formatDateTime(p.paidAt)}</td>
                       <td style={{ fontWeight: 600 }}>{customer?.name || '—'}</td>
-                      <td style={{ color: 'var(--color-primary)', fontWeight: 600 }}>{order?.orderNumber || '—'}</td>
+                      <td style={{ color: 'var(--brand-500)', fontWeight: 800 }}>{order?.orderNumber || '—'}</td>
                       <td><Badge text={p.method} type="delivered" /></td>
-                      <td style={{ fontWeight: 700, color: 'var(--color-success)' }}>{formatCurrency(p.amount)}</td>
+                      <td style={{ fontWeight: 900, color: 'var(--success-600)' }}>{formatCurrency(p.amount)}</td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
           </div>
-          <div style={{ padding: '14px 18px', borderTop: '2px solid var(--color-border)', display: 'flex', justifyContent: 'flex-end', fontWeight: 700, fontSize: 16 }}>
+          <div style={{ padding: '14px 18px', borderTop: '1px solid var(--border)', display: 'flex', justifyContent: 'flex-end', fontWeight: 900, fontSize: 16 }}>
             Total: {formatCurrency(filtered.reduce((s, p) => s + p.amount, 0))}
           </div>
         </Card>

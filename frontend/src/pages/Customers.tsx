@@ -94,19 +94,19 @@ export default function Customers() {
           </div>
 
           {showStats && (
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(60px, 1fr))', gap: 12, paddingTop: 12, borderTop: '1px solid var(--color-border)' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(60px, 1fr))', gap: 12, paddingTop: 12, borderTop: '1px solid var(--border)' }}>
               <div style={{ textAlign: 'center' }}>
-                <div style={{ fontSize: 11, color: 'var(--color-muted)', fontWeight: 700, textTransform: 'uppercase', marginBottom: 2 }}>Orders</div>
-                <div style={{ fontWeight: 700, fontSize: 16, color: 'var(--color-primary)' }}>{stats.count}</div>
+                <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 900, textTransform: 'uppercase', marginBottom: 2 }}>Orders</div>
+                <div style={{ fontWeight: 900, fontSize: 16, color: 'var(--brand-500)' }}>{stats.count}</div>
               </div>
                <div style={{ textAlign: 'center' }}>
-                 <div style={{ fontSize: 11, color: 'var(--color-muted)', fontWeight: 700, textTransform: 'uppercase', marginBottom: 2 }}>Paid</div>
-                 <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--color-success)' }}>{formatCurrency(stats.totalSpent)}</div>
+                 <div style={{ fontSize: 11, color: 'var(--text-muted)', fontWeight: 900, textTransform: 'uppercase', marginBottom: 2 }}>Paid</div>
+                 <div style={{ fontWeight: 900, fontSize: 14, color: 'var(--success-600)' }}>{formatCurrency(stats.totalSpent)}</div>
                </div>
               {stats.outstanding > 0 && (
                 <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 11, color: 'var(--color-danger)', fontWeight: 700, textTransform: 'uppercase', marginBottom: 2 }}>Owes</div>
-                  <div style={{ fontWeight: 700, fontSize: 14, color: 'var(--color-danger)' }}>{formatCurrency(stats.outstanding)}</div>
+                  <div style={{ fontSize: 11, color: 'var(--danger-600)', fontWeight: 900, textTransform: 'uppercase', marginBottom: 2 }}>Owes</div>
+                  <div style={{ fontWeight: 900, fontSize: 14, color: 'var(--danger-600)' }}>{formatCurrency(stats.outstanding)}</div>
                 </div>
               )}
             </div>

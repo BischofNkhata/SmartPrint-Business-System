@@ -3,7 +3,7 @@ import { useState } from 'react';
 import type { FormLevel } from '../types';
 import { useStore } from '../store';
 import { formatCurrency, formatDate } from '../utils';
-import { Button, Card, Badge } from '../components/UI';
+import { Button, Card, Badge, PageHeader, KpiTile } from '../components/UI';
 import { ArrowLeft } from 'lucide-react';
 import { useToast } from '../components/Toast';
 import { useConfirmModal } from '../components/ConfirmModal';
@@ -60,29 +60,29 @@ export default function CustomerDetail() {
   };
 
   return (
-    <div className="fade-in" style={{ maxWidth: 700, margin: '0 auto' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
-        <button onClick={() => navigate('/customers')} style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-muted)' }}>
-          <ArrowLeft size={20} />
-        </button>
-        <div>
-          <h1 style={{ margin: 0, fontSize: 24 }}>{customer.name}</h1>
-          <div style={{ marginTop: 4 }}><Badge text={customer.formLevel} type="delivered" /></div>
-        </div>
+    <div className="fade-in" style={{ maxWidth: 820, margin: '0 auto' }}>
+      <PageHeader
+        title={customer.name}
+        subtitle="Customer profile and order history"
+        icon={<ArrowLeft size={18} />}
+        action={
+          <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+            <Button variant="secondary" onClick={() => navigate('/customers')} size="md">
+              <ArrowLeft size={16} /> Back
+            </Button>
+            <Button variant="danger" onClick={handleDelete} size="md">Delete</Button>
+          </div>
+        }
+      />
+
+      <div style={{ marginBottom: 14 }}>
+        <Badge text={customer.formLevel} type="delivered" />
       </div>
 
-      {/* Stats */}
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 14, marginBottom: 20 }}>
-        {[
-          { label: 'Total Orders', value: customerOrders.length.toString() },
-          { label: 'Total Spent', value: formatCurrency(totalSpent) },
-          { label: 'Outstanding', value: formatCurrency(outstanding) },
-        ].map(s => (
-          <Card key={s.label}>
-            <div style={{ fontSize: 11, color: 'var(--color-muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em' }}>{s.label}</div>
-            <div style={{ fontFamily: 'DM Serif Display, serif', fontSize: 22, marginTop: 4 }}>{s.value}</div>
-          </Card>
-        ))}
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: 12, marginBottom: 18 }}>
+        <KpiTile label="Total Orders" value={customerOrders.length} tone="primary" />
+        <KpiTile label="Total Spent" value={formatCurrency(totalSpent)} tone="success" />
+        <KpiTile label="Outstanding" value={formatCurrency(outstanding)} tone={outstanding > 0 ? 'danger' : 'success'} />
       </div>
 
       {/* Info */}
@@ -98,7 +98,7 @@ export default function CustomerDetail() {
                   setFormLevelEdit(customer.formLevel);
                 }
                 setEditing(true);
-              }} style={{ background: 'none', border: 'none', color: 'var(--color-primary)', cursor: 'pointer' }}>Edit</button>
+              }} style={{ background: 'none', border: 'none', color: 'var(--brand-500)', cursor: 'pointer', fontWeight: 900 }}>Edit</button>
             ) : (
               <>
                 <button
@@ -111,9 +111,9 @@ export default function CustomerDetail() {
                       showToast('Failed to update customer', 'error');
                     }
                   }}
-                  style={{ marginRight: 8, padding: '6px 10px', borderRadius: 8, background: 'var(--color-primary)', color: 'white', border: 'none', cursor: 'pointer' }}
+                  style={{ marginRight: 8, padding: '8px 12px', borderRadius: 12, background: 'linear-gradient(135deg, var(--brand-500) 0%, var(--brand-600) 100%)', color: 'white', border: 'none', cursor: 'pointer', fontWeight: 900 }}
                 >Save</button>
-                <button onClick={() => { setEditing(false); if (customer) { setNameEdit(customer.name); setPhoneEdit(customer.phone ?? ''); setFormLevelEdit(customer.formLevel); } }} style={{ padding: '6px 10px', borderRadius: 8, background: 'white', border: '1px solid var(--color-border)' }}>Cancel</button>
+                <button onClick={() => { setEditing(false); if (customer) { setNameEdit(customer.name); setPhoneEdit(customer.phone ?? ''); setFormLevelEdit(customer.formLevel); } }} style={{ padding: '8px 12px', borderRadius: 12, background: 'var(--control-bg)', border: '1px solid var(--border)', color: 'var(--text)', fontWeight: 900, cursor: 'pointer' }}>Cancel</button>
               </>
             )}
           </div>
@@ -122,7 +122,7 @@ export default function CustomerDetail() {
         {!editing ? (
           <>
             {customer.phone && <div style={{ fontSize: 14, marginBottom: 6 }}>📱 {customer.phone}</div>}
-            <div style={{ fontSize: 14, color: 'var(--color-muted)' }}>Customer since {formatDate(customer.createdAt)}</div>
+            <div style={{ fontSize: 14, color: 'var(--text-muted)', fontWeight: 700 }}>Customer since {formatDate(customer.createdAt)}</div>
           </>
         ) : (
           <div style={{ display: 'grid', gap: 10 }}>

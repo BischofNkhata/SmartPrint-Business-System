@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useStore } from '../store';
 import { formatCurrency } from '../utils';
-import { PageHeader, Card, KpiTile, FilterChip } from '../components/UI';
+import { PageHeader, Card, KpiTile, FilterChip, Button } from '../components/UI';
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
   CartesianGrid, PieChart, Pie, Cell, Legend,
@@ -119,16 +119,9 @@ export default function Reports() {
         icon={<BarChart3 size={18} />}
         subtitle="Business performance overview"
         action={
-          <button
-            onClick={exportCSV}
-            style={{
-              display: 'flex', alignItems: 'center', gap: 6, padding: '9px 16px',
-              background: 'white', border: '1.5px solid var(--color-border)', borderRadius: 8,
-              cursor: 'pointer', fontWeight: 600, fontSize: 13,
-            }}
-          >
+          <Button variant="secondary" onClick={exportCSV} size="md">
             <Download size={15} /> Export CSV
-          </button>
+          </Button>
         }
       />
 

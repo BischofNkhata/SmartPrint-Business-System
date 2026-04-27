@@ -24,7 +24,16 @@ export const useAuthStore = create<AuthState>()(
           isAuthenticated: true,
         });
       },
-      logout: () => set({ token: null, role: null, isAuthenticated: false }),
+      logout: () => {
+        try {
+          localStorage.removeItem('printmis-auth');
+          localStorage.removeItem('printmis-store-v2');
+          localStorage.removeItem('printmis-theme');
+        } catch {
+          // ignore
+        }
+        set({ token: null, role: null, isAuthenticated: false });
+      },
     }),
     { name: 'printmis-auth' },
   ),
