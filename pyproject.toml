@@ -1,0 +1,26 @@
+[project]
+name = "smartprint-business-system"
+version = "1.0.0"
+description = "Business management system for printing shops"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "sqlalchemy",
+    "psycopg[binary]",
+    "pydantic-settings",
+    "alembic",
+    "python-dotenv",
+    "pytest",
+    "httpx",
+    "PyJWT",
+    "passlib[argon2]",
+]
+
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["backend", "api"]
+

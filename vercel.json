@@ -2,29 +2,25 @@
   "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/dist",
   "functions": {
-    "main.py": {
-      "runtime": "python@3.11"
-    },
     "api/index.py": {
-      "runtime": "python@3.11"
+      "runtime": "python@3.11",
+      "pythonVersion": "3.11"
     }
   },
-  "rewrites": [
+  "routes": [
     {
-      "source": "/api/v1/(.*)",
-      "destination": "/main.py"
+      "src": "/api/.*",
+      "dest": "/api/index.py"
     },
     {
-      "source": "/health",
-      "destination": "/main.py"
+      "src": "/health",
+      "dest": "/api/index.py"
     },
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "status": 200
     }
-  ],
-  "env": {
-    "PYTHONPATH": "."
-  }
+  ]
 }
 
