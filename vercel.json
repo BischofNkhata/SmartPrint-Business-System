@@ -1,0 +1,30 @@
+{
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "main.py": {
+      "runtime": "python@3.11"
+    },
+    "api/index.py": {
+      "runtime": "python@3.11"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/v1/(.*)",
+      "destination": "/main.py"
+    },
+    {
+      "source": "/health",
+      "destination": "/main.py"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "env": {
+    "PYTHONPATH": "."
+  }
+}
+
