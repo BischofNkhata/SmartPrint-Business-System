@@ -1,10 +1,11 @@
 {
   "experimentalServices": {
     "frontend": {
+      "framework": "vite",
       "routePrefix": "/"
     },
     "backend": {
-      "entrypoint": "backend",
+      "entrypoint": "backend/main.py",
       "routePrefix": "/api"
     }
   }
