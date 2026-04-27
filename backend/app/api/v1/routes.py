@@ -5,7 +5,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session, selectinload
 
 from app.db.session import get_db
-from app.core.security import require_admin
+from app.core.security import get_current_user
 from app.models.entities import (
     Customer,
     Expense,
@@ -40,7 +40,7 @@ from app.schemas.entities import (
 )
 from app.services.business import derive_payment_status, get_next_order_number, report_summary
 
-router = APIRouter(dependencies=[Depends(require_admin)])
+router = APIRouter(dependencies=[Depends(get_current_user)])
 
 
 @router.get("/customers", response_model=list[CustomerRead])
