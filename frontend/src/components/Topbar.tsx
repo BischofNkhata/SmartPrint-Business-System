@@ -20,7 +20,6 @@ export function Topbar() {
         <div className="search" role="search" aria-label="Search">
           <Search size={16} style={{ color: 'var(--text-muted)' }} />
           <input value={q} onChange={(e) => setQ(e.target.value)} placeholder={placeholder} />
-          <span className="kbd">Ctrl K</span>
         </div>
       </div>
       <div className="topbar-right">
