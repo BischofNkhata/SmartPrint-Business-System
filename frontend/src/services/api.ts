@@ -10,7 +10,22 @@ import type {
   PricingItem,
 } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000';
+const rawApiBaseUrl = import.meta.env.VITE_API_BASE_URL?.trim();
+
+const normalizeBaseUrl = (value: string): string => value.replace(/\/+$/, '');
+
+const isLocalhostUrl = (value: string): boolean => /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(value);
+
+const API_BASE_URL = (() => {
+  if (rawApiBaseUrl) {
+    const normalized = normalizeBaseUrl(rawApiBaseUrl);
+    // Guard production builds against accidentally shipping localhost API URLs.
+    if (import.meta.env.PROD && isLocalhostUrl(normalized)) return '';
+    return normalized;
+  }
+  return import.meta.env.DEV ? 'http://localhost:8000' : '';
+})();
+
 const API_PREFIX = `${API_BASE_URL}/api/v1`;
 
 export interface LoginResponse {
