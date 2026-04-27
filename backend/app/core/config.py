@@ -12,7 +12,8 @@ class Settings(BaseSettings):
     database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/printmis"
 
     # CORS origins - comma-separated list of allowed origins
-    cors_origins: str = "http://localhost:5173,http://localhost:3000"
+    # Default includes local dev and Vercel domains
+    cors_origins: str = "http://localhost:5173,http://localhost:3000,https://*.vercel.app"
 
     # Security
     secret_key: str = "change-me-in-production"
