@@ -31,6 +31,10 @@ Manage orders, customers, payments, inventory, and business analytics — from a
 
 <br />
 
+<a href="screenshots/Landing_page.jpg"><img src="screenshots/Landing_page.jpg" alt="SmartPrint Landing Page" width="100%" style="border-radius: 12px" /></a>
+
+<br />
+
 </div>
 
 ---
@@ -94,23 +98,28 @@ Pre-configured price table across all subjects and form levels. Prices auto-fill
 
 ## 🖥️ Interface Highlights
 
-```
-Desktop                          Mobile
-┌─────────────────────────────┐  ┌──────────────────┐
-│ ■ SmartPrint    [Dashboard] │  │   Dashboard      │
-│ ──────────────  ┌─────────┐ │  │ ┌──────────────┐ │
-│ Dashboard       │ MK 84K  │ │  │ │ Revenue      │ │
-│ Orders          │ Revenue │ │  │ │ MK 84,200    │ │
-│ Customers       └─────────┘ │  │ └──────────────┘ │
-│ Payments        ┌─────────┐ │  │ ┌──────────────┐ │
-│ ──────────────  │ Chart   │ │  │ │ Profit       │ │
-│ Expenses        │ ▁▃▅▇▅▃  │ │  │ │ MK 31,700    │ │
-│ Inventory       └─────────┘ │  │ └──────────────┘ │
-│ Pricing         Recent Ord. │  │ ──────────────── │
-│ Reports         ──────────  │  │ [▣][≡][◉][•][+] │
-└─────────────────────────────┘  └──────────────────┘
-         Sidebar nav                  Bottom tab bar
-```
+SmartPrint provides a seamless, fully responsive experience designed to work perfectly on any screen size.
+
+### Comprehensive Desktop Dashboard
+<a href="screenshots/Desktop_Dashboard.jpg"><img src="screenshots/Desktop_Dashboard.jpg" alt="Desktop Dashboard" width="100%" /></a>
+
+<br />
+
+### Mobile & Tablet Ready
+<table width="100%">
+  <tr>
+    <td width="60%" align="center" valign="top">
+      <b>Responsive Tablet View</b><br/><br/>
+      <a href="screenshots/Tablet_Dashboard.jpg"><img src="screenshots/Tablet_Dashboard.jpg" alt="Tablet Dashboard" width="100%" /></a>
+    </td>
+    <td width="40%" align="center" valign="top">
+      <b>Optimized Mobile App View</b><br/><br/>
+      <a href="screenshots/Mobile_Dashboard.jpg"><img src="screenshots/Mobile_Dashboard.jpg" alt="Mobile Dashboard" width="65%" /></a>
+    </td>
+  </tr>
+</table>
+
+<br />
 
 - **Sidebar navigation** on desktop with collapsible sections
 - **Bottom tab bar** on mobile with a slide-up drawer for secondary pages
@@ -541,6 +550,12 @@ npm run build
 ## 🔒 Security
 
 SmartPrint is built with security in mind from day one:
+
+<div align="center">
+  <br />
+  <a href="screenshots/Login_page.jpg"><img src="screenshots/Login_page.jpg" alt="Secure Login Page Form" width="600" style="border-radius: 8px; margin-bottom: 20px;" /></a>
+  <br />
+</div>
 
 | Concern | Implementation |
 |---------|---------------|
