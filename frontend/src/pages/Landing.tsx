@@ -99,7 +99,7 @@ export default function Landing() {
                 <div className="mini-grid">
                   <div className="mini-card">
                     <div className="mini-label">Cash in (month)</div>
-                    <div className="mini-value">$ 19,945</div>
+                    <div className="mini-value">MWK  19,945</div>
                     <div className="mini-row">
                       <span style={{ color: 'var(--text-muted)', fontWeight: 800, fontSize: 12 }}>Trend</span>
                       <span style={{ color: 'var(--success-600)', fontWeight: 900 }}>+12%</span>
@@ -107,7 +107,7 @@ export default function Landing() {
                   </div>
                   <div className="mini-card">
                     <div className="mini-label">Outstanding</div>
-                    <div className="mini-value">$ 5,120</div>
+                    <div className="mini-value">MWK  5,120</div>
                     <div className="mini-row">
                       <span style={{ color: 'var(--text-muted)', fontWeight: 800, fontSize: 12 }}>Delivered</span>
                       <span style={{ color: 'var(--warning-600)', fontWeight: 900 }}>9 orders</span>
@@ -116,9 +116,9 @@ export default function Landing() {
                 </div>
                 <div style={{ marginTop: 12, display: 'grid', gap: 10 }}>
                   {[
-                    { title: 'Order #PM-2408', meta: 'Form 3 • Biology • 12 copies', right: '$ 4,800' },
-                    { title: 'Order #PM-2407', meta: 'Form 1 • Chichewa • 20 copies', right: '$ 3,200' },
-                    { title: 'Order #PM-2406', meta: 'Form 4 • Physics • 8 copies', right: '$ 2,100' },
+                    { title: 'Order #PM-2408', meta: 'Form 3 • Biology • 12 copies', right: 'MWK  4,800' },
+                    { title: 'Order #PM-2407', meta: 'Form 1 • Chichewa • 20 copies', right: 'MWK  3,200' },
+                    { title: 'Order #PM-2406', meta: 'Form 4 • Physics • 8 copies', right: 'MWK  2,100' },
                   ].map((r) => (
                     <div key={r.title} className="mini-row" style={{ background: 'var(--bg-elevated)' }}>
                       <div style={{ minWidth: 0 }}>

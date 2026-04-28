@@ -266,9 +266,9 @@ export function FilterChip({ label, active, onClick }: {
         fontWeight: 700,
         cursor: 'pointer',
         border: '1px solid',
-        borderColor: active ? 'var(--color-primary)' : 'var(--color-border)',
-        background: active ? 'var(--color-primary)' : 'white',
-        color: active ? 'white' : 'var(--color-muted)',
+        borderColor: active ? 'var(--color-primary)' : 'var(--border)',
+        background: active ? 'var(--color-primary)' : 'var(--bg)',
+        color: active ? 'white' : 'var(--text)',
       }}
     >
       {label}
