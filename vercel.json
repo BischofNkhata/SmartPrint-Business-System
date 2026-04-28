@@ -6,7 +6,7 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "backend/main.py" },
-    { "handle": "filesystem" },
+    { "src": "/(.*\\.(?:js|css|svg|png|jpg|ico|json|txt|woff|ttf))$", "dest": "/frontend/$1" },
     { "src": "/(.*)", "dest": "/frontend/index.html" }
   ]
 }
